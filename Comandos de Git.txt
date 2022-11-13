@@ -1,0 +1,106 @@
+Comandos para utilización de Git
+
+- Lo primero que hay que hacer es iniciar el repositorio donde estará el proyecto para que comience el seguimiento de nuestro proyecto esto se hará con el comando y se debería de hacer siempre al inicio del mismo con el comando:
+
+git init
+
+
+- Para incluir los archivos al area de ensayo o (staging area) usaremos el comando:
+
+git add "seguido del nombre del archivo"
+
+* en caso de que quieras que se añadan todos los archivos al mismo tiempo lo que habrá que hacer es quitar el entrecomillado con el nombre del archivo especifico por el un . es decir
+
+git add .
+
+
+- Para poder subir los archivos a github y crear el respaldo de los archivos, el comando que usaremos sera:
+
+git commit
+
+Este comando tiene varios parámetros y opciones para completar y poder ingresar el nombre con el que identificaremos la instantánea abra que añadir "-m", para poder hacer un add y un commit a la vez usaremos el comando git commit con los parámetros "-am" seguido del comentario de rigor entre comillas.
+
+
+- Para poder ver todos los archivos y directorios que tenemos dentro de nuestro proyecto lo que deberemos hacer es ejecutar el siguiente comando:
+
+git status
+
+si lo que queremos es ver solo los ficheros que están sometidos a algún cambio usaremos el parámetro -s
+
+- Para ver todos los commit que hemos realizado en nuestro proyecto con sus códigos correspondientes y con la persona que los ha echo usaremos el comando:
+
+git log
+
+* En caso de querer ver solo un nº determinado de commit podemos completar el comando con -n y el número de commit que deseamos que se muestren "si queremos 3 commit pues pondríamos git log -n 3"
+
+* Para ver el log de una manera mucho más genérica usaremos el parámetro --oneline. Si lo que queremos es ver un commit en concreto lo que haremos sera introducir el comando:
+
+* Si lo queremos ver mas decorado con el dibujo de las ramificaciones el comando lo completaremos con --graph -oneline --decorate quedando:
+
+git log -- graph --oneline --decorate
+
+git cat-file -p "número del commit que queremos consultar"
+
+- Para restaurar el proyecto a un estado anterior usaremos el siguiente comando:
+
+git reset --hard "código la instantánea a la que queremos regresar"
+
+- Para modificar el  nombre de un commit en caso de equivocación o deseo de cambio de nombre lo que aremos sera usar el siguiente comando:
+
+git commit --amend
+
+esto lo que ara será abrir nuestro editor de texto predeterminado para su posterior edición.
+
+- Para poder ver si el repositorio esta ligado a una dirección en github el comando que hay que utilizar es el siguiente:
+
+git remote -v
+
+- Para subir nuestro código a nuestro repositorio el comando sera:
+
+git push
+
+- Para ver las diferencias entre un fichero existente y uno modificado usaremos el comando:
+
+git diff
+
+* En caso de que queramos comparar dos commit específicos el comando que tendremos que emplear será:
+
+git diff "número de serie del 1º commit (pueden ser los 4 primero dígitos siempre y cuando no coincidan con otro commit)".."número de serie del 2º commit"
+
+- Para borrar ficheros el comando que usaremos será:
+
+git rm "nombre del fichero"
+
+* pero un detalle muy importante es que si el fichero ya se ha se ha movido al staging area primero habrá que eliminarlo de este sitio y luego del working area. Para ello usaremos el siguiente parámetro --cached, una vez borrado el fichero del staging area, ahora si que podremos borrar del working area el archivo deseado. Para borrarlo todo a la vez añadiendo el parámetro -f. Por lo que el comando quedaría de la siguiente manera.
+
+git rm "nombre del archivo" --coached  -> borra solo del staging area
+git rm "nombre del archivo" -f         -> borra tanto del staging area como del working area.
+
+
+- Los TAG,s son anotaciones para definir que nuestro proyecto esta en una versión determinada, para ello usaremos el siguiente comando:
+
+git tag -a "nombre de la versión" -m "comentario sobre la versión"
+
+- Para ver las ramas que tenemos en nuestro proyecto usaremos el siguiente comando:
+
+git branch
+
+* Si lo que queremos es crear una nueva rama lo que aremos sera usar el comando:
+
+git branch "nombre de la rama que queremos crear"
+
+- Para poder cambiar de rama usaremos el comando:
+
+git checkout "nombre de la rama a la que queremos ir"
+
+- Cuando nos queremos unificar dos ramas en una sola, nos posicionaremos en la rama a la que queremos anexionar otras ramas y usaremos el siguiente comando:
+
+git merge "nombre de la rama que queremos unir a la que queremos consideramos principal"
+
+- Para poder clonar un directorio remoto en nuestra maquina lo que deberemos hacer sera disponer de la URL del proyecto y ejecutar el siguiente comando.
+
+git clone "URL del proyecto"
+
+- Para poder subir todos los archivos de nuestro repositorio local a nuestro repositorio remoto tendremos que ejecutar el siguiente comando:
+
+git push
